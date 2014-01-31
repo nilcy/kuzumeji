@@ -9,4 +9,7 @@
   <artifactId>kuzumeji-framework</artifactId>
   <packaging>pom</packaging>
   <name>kuzumeji-framework</name>
+  <modules>
+    <module>kuzumeji-framework-coding</module>
+  </modules>
 </project>

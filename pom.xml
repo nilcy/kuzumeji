@@ -1,33 +1,274 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.github.nilcy</groupId>
   <artifactId>kuzumeji</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>pom</packaging>
   <name>kuzumeji</name>
+  <description>Kuzumeji is &quot;Enterprise Cloud Application Bootstrap&quot;.</description>
+  <url>https://github.com/nilcy/kuzumeji</url>
+  <inceptionYear>2014</inceptionYear>
+  <organization>
+    <name>nilcy</name>
+    <url>https://github.com/nilcy</url>
+  </organization>
+  <licenses>
+    <license>
+      <name>GNU GENERAL PUBLIC LICENSE</name>
+      <url>http://www.gnu.org/licenses/gpl-3.0.txt</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
+  <developers>
+    <developer>
+      <id>nilcy</id>
+      <name>nilcy</name>
+      <email>nilcy@mac.com</email>
+      <url>https://github.com/nilcy</url>
+    </developer>
+  </developers>
+  <modules>
+    <module>kuzumeji-framework</module>
+    <module>kuzumeji-domain</module>
+    <module>kuzumeji-application</module>
+  </modules>
+  <scm>
+    <connection>scm:git:git://github.com/nilcy/kuzumeji.git</connection>
+    <developerConnection>scm:git:git@github.com:nilcy/kuzumeji.git</developerConnection>
+    <url>https://github.com/nilcy/kuzumeji</url>
+  </scm>
+  <issueManagement>
+    <system>GitHub Issues</system>
+    <url>https://github.com/nilcy/kuzumeji/issues</url>
+  </issueManagement>
   <distributionManagement>
-    <repository>
-      <id>internal-repo</id>
-      <name>Internal Repository</name>
-      <url>${internal.repo.url}</url>
-    </repository>
     <site>
-      <id>github-pages-site</id>
-      <name>Deployment through GitHub's site deployment plugin</name>
+      <id>kuzumeji-site</id>
+      <name>Kuzumeji site</name>
       <url>site/${project.version}</url>
     </site>
+    <repository>
+      <id>kuzumeji-release</id>
+      <name>Kuzumeji release repository</name>
+      <url>${kuzumeji.release.url}</url>
+    </repository>
+    <snapshotRepository>
+      <id>kuzumeji-snapshot</id>
+      <name>Kuzumeji snapshot repository</name>
+      <url>${kuzumeji.snapshot.url}</url>
+    </snapshotRepository>
   </distributionManagement>
+  <properties>
+    <maven.compiler.source>1.7</maven.compiler.source>
+    <maven.compiler.target>1.7</maven.compiler.target>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    <site.encoding>UTF-8</site.encoding>
+    <github.global.server>github</github.global.server>
+    <kuzumeji.repo.url>file:///home.nilcy/git/maven/repo</kuzumeji.repo.url>
+    <kuzumeji.release.url>file:///home.nilcy/git/maven/release</kuzumeji.release.url>
+    <kuzumeji.snapshot.url>file:///home.nilcy/git/maven/snapshot</kuzumeji.snapshot.url>
+  </properties>
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>junit</groupId>
+        <artifactId>junit</artifactId>
+        <version>4.11</version>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.commons</groupId>
+        <artifactId>commons-lang3</artifactId>
+        <version>3.1</version>
+      </dependency>
+      <dependency>
+        <groupId>ch.qos.logback</groupId>
+        <artifactId>logback-classic</artifactId>
+        <version>1.0.13</version>
+      </dependency>
+      <dependency>
+        <groupId>org.eclipse.persistence</groupId>
+        <artifactId>eclipselink</artifactId>
+        <version>2.5.0</version>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.derby</groupId>
+        <artifactId>derby</artifactId>
+        <version>10.10.1.1</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jboss.arquillian</groupId>
+        <artifactId>arquillian-bom</artifactId>
+        <version>1.0.4.Final</version>
+        <scope>import</scope>
+        <type>pom</type>
+      </dependency>
+      <dependency>
+        <groupId>org.jboss.arquillian.extension</groupId>
+        <artifactId>arquillian-transaction-jta</artifactId>
+        <version>1.0.0.Alpha3</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jboss.arquillian.container</groupId>
+        <artifactId>arquillian-glassfish-embedded-3.1</artifactId>
+        <version>1.0.0.CR4</version>
+      </dependency>
+      <dependency>
+        <groupId>org.glassfish.main.extras</groupId>
+        <artifactId>glassfish-embedded-all</artifactId>
+        <version>4.0</version>
+      </dependency>
+      <dependency>
+        <groupId>org.postgresql</groupId>
+        <artifactId>postgresql</artifactId>
+        <version>9.2-1003-jdbc4</version>
+      </dependency>
+      <dependency>
+        <groupId>javax</groupId>
+        <artifactId>javaee-api</artifactId>
+        <version>7.0</version>
+      </dependency>
+      <dependency>
+        <groupId>net.sf.ehcache</groupId>
+        <artifactId>ehcache-jcache</artifactId>
+        <version>1.5.0-0.5</version>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+  <repositories>
+    <repository>
+      <id>central</id>
+      <name>Central Repository</name>
+      <url>http://repo.maven.apache.org/maven2</url>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+    </repository>
+    <repository>
+      <id>kuzumeji-repo</id>
+      <name>Kuzumeji Repository</name>
+      <url>https://raw.github.com/nilcy/maven/master/repo</url>
+      <releases>
+        <enabled>true</enabled>
+      </releases>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+    </repository>
+    <repository>
+      <id>kuzumeji-release</id>
+      <name>Kuzumeji Release Repository</name>
+      <url>https://raw.github.com/nilcy/maven/master/release</url>
+      <releases>
+        <enabled>true</enabled>
+      </releases>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+    </repository>
+    <repository>
+      <id>kuzumeji-snapshot</id>
+      <name>Kuzumeji Snapshot Repository</name>
+      <url>https://raw.github.com/nilcy/maven/master/snapshot</url>
+      <releases>
+        <enabled>false</enabled>
+      </releases>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+    </repository>
+  </repositories>
   <build>
+    <defaultGoal>clean install</defaultGoal>
+    <directory>target</directory>
     <pluginManagement>
       <plugins>
         <plugin>
-          <artifactId>maven-project-info-reports-plugin</artifactId>
+          <artifactId>maven-antrun-plugin</artifactId>
+          <version>1.7</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-assembly-plugin</artifactId>
+          <version>2.4</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-dependency-plugin</artifactId>
+          <version>2.8</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-release-plugin</artifactId>
+          <version>2.4.1</version>
+        </plugin>
+        <plugin>
+          <groupId>org.eclipse.m2e</groupId>
+          <artifactId>lifecycle-mapping</artifactId>
+          <version>1.0.0</version>
+          <configuration>
+            <lifecycleMappingMetadata>
+              <pluginExecutions>
+                <pluginExecution>
+                  <pluginExecutionFilter>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>aspectj-maven-plugin</artifactId>
+                    <versionRange>[1.2,)</versionRange>
+                    <goals>
+                      <goal>compile</goal>
+                      <goal>test-compile</goal>
+                    </goals>
+                  </pluginExecutionFilter>
+                  <action>
+                    <ignore />
+                  </action>
+                </pluginExecution>
+              </pluginExecutions>
+            </lifecycleMappingMetadata>
+          </configuration>
+        </plugin>
+        <plugin>
+          <artifactId>maven-clean-plugin</artifactId>
+          <version>2.5</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-source-plugin</artifactId>
+          <version>2.2.1</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-javadoc-plugin</artifactId>
+          <version>2.9</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <version>3.1</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-resources-plugin</artifactId>
+          <version>2.6</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-surefire-plugin</artifactId>
+          <version>2.15</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-install-plugin</artifactId>
+          <version>2.4</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-ejb-plugin</artifactId>
+          <version>2.3</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-war-plugin</artifactId>
+          <version>2.3</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-deploy-plugin</artifactId>
           <version>2.7</version>
         </plugin>
         <plugin>
           <artifactId>maven-site-plugin</artifactId>
-          <version>3.1</version>
+          <version>3.3</version>
         </plugin>
         <plugin>
           <groupId>com.github.github</groupId>
@@ -38,22 +279,193 @@
     </pluginManagement>
     <plugins>
       <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-site-plugin</artifactId>
-        <dependencies>
-          <dependency>
-            <!-- allows markdown syntax for site generation. To use it place files below src/site/markdown/[filename].md -->
-            <groupId>org.apache.maven.doxia</groupId>
-            <artifactId>doxia-module-markdown</artifactId>
-            <version>1.3</version>
-          </dependency>
-        </dependencies>
+        <artifactId>maven-source-plugin</artifactId>
+        <executions>
+          <execution>
+            <phase>install</phase>
+            <goals>
+              <goal>jar</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <executions>
+          <execution>
+            <phase>deploy</phase>
+            <goals>
+              <goal>jar</goal>
+            </goals>
+          </execution>
+        </executions>
         <configuration>
+          <locale>en</locale>
+          <author>true</author>
+          <show>private</show>
+          <linksource>true</linksource>
+          <detectLinks>false</detectLinks>
+          <aggregate>false</aggregate>
+          <links>
+            <link>http://docs.oracle.com/javase/7/docs/api/</link>
+            <link>http://java.sun.com/javaee/6/docs/api/</link>
+            <link>http://junit-team.github.io/junit/javadoc/latest/</link>
+            <link>http://hamcrest.org/JavaHamcrest/javadoc/1.3/</link>
+          </links>
+        </configuration>
+      </plugin>
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <compilerArgument>-Xlint</compilerArgument>
+        </configuration>
+      </plugin>
+      <plugin>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <configuration>
+          <forkMode>once</forkMode>
+          <!-- <forkCount>1</forkCount> -->
+          <!-- <reuseForks>false</reuseForks> -->
+          <argLine>-Xms512m -Xmx512m -XX:-UseSplitVerifier</argLine>
+          <testFailureIgnore>false</testFailureIgnore>
+          <systemProperties>
+            <property>
+              <name>net.sourceforge.cobertura.datafile</name>
+              <value>target/cobertura/cobertura.ser</value>
+            </property>
+            <property>
+              <name>java.util.logging.config.file</name>
+              <value>${basedir}/src/test/resources/logging.properties</value>
+            </property>
+          </systemProperties>
+        </configuration>
+      </plugin>
+      <plugin>
+        <artifactId>maven-ejb-plugin</artifactId>
+        <configuration>
+          <ejbVersion>3.2</ejbVersion>
+        </configuration>
+      </plugin>
+      <plugin>
+        <artifactId>maven-war-plugin</artifactId>
+        <configuration>
+          <failOnMissingWebXml>false</failOnMissingWebXml>
+        </configuration>
+      </plugin>
+      <plugin>
+        <artifactId>maven-site-plugin</artifactId>
+        <configuration>
+          <locales>en</locales>
+          <dependencies>
+            <dependency>
+              <groupId>org.apache.maven.doxia</groupId>
+              <artifactId>doxia-module-markdown</artifactId>
+              <version>1.4</version>
+            </dependency>
+          </dependencies>
+          <reportPlugins>
+            <plugin>
+              <artifactId>maven-project-info-reports-plugin</artifactId>
+              <version>2.7</version>
+              <configuration>
+                <dependencyDetailsEnabled>true</dependencyDetailsEnabled>
+                <dependencyLocationsEnabled>true</dependencyLocationsEnabled>
+              </configuration>
+              <reportSets>
+                <reportSet>
+                  <reports>
+                    <report>index</report>
+                    <report>summary</report>
+                    <report>license</report>
+                    <report>project-team</report>
+                    <report>mailing-list</report>
+                    <report>dependencies</report>
+                    <report>dependency-convergence</report>
+                    <report>dependency-management</report>
+                    <report>issue-tracking</report>
+                    <report>scm</report>
+                    <report>cim</report>
+                    <report>plugin-management</report>
+                    <report>plugins</report>
+                  </reports>
+                </reportSet>
+              </reportSets>
+            </plugin>
+            <plugin>
+              <artifactId>maven-jxr-plugin</artifactId>
+              <version>2.3</version>
+              <configuration>
+                <aggregate>false</aggregate>
+                <inputEncoding>${maven.compiler.encoding}</inputEncoding>
+                <outputEncoding>UTF-8</outputEncoding>
+              </configuration>
+            </plugin>
+            <plugin>
+              <artifactId>maven-javadoc-plugin</artifactId>
+              <version>2.9</version>
+            </plugin>
+            <plugin>
+              <artifactId>maven-surefire-report-plugin</artifactId>
+              <version>2.13</version>
+              <reportSets>
+                <reportSet>
+                  <reports>
+                    <report>report-only</report>
+                  </reports>
+                </reportSet>
+              </reportSets>
+            </plugin>
+            <plugin>
+              <groupId>org.codehaus.mojo</groupId>
+              <artifactId>cobertura-maven-plugin</artifactId>
+              <version>2.5.2</version>
+              <configuration>
+                <formats>
+                  <format>html</format>
+                </formats>
+              </configuration>
+            </plugin>
+            <plugin>
+              <artifactId>maven-checkstyle-plugin</artifactId>
+              <version>2.9.1</version>
+              <configuration>
+                <configLocation>kuzumeji-framework/kuzumeji-framework-coding/src/main/config/Checkstyle.xml</configLocation>
+              </configuration>
+            </plugin>
+          </reportPlugins>
           <skipDeploy>true</skipDeploy>
         </configuration>
       </plugin>
       <plugin>
-        <artifactId>maven-project-info-reports-plugin</artifactId>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>dbunit-maven-plugin</artifactId>
+        <version>1.0-beta-3</version>
+        <dependencies>
+          <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>9.2-1002-jdbc4</version>
+          </dependency>
+          <dependency>
+            <groupId>org.apache.derby</groupId>
+            <artifactId>derbyclient</artifactId>
+            <version>10.10.1.1</version>
+          </dependency>
+          <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi</artifactId>
+            <version>3.2-FINAL</version>
+          </dependency>
+        </dependencies>
+        <configuration>
+          <dataTypeFactoryName>org.dbunit.ext.postgresql.PostgresqlDataTypeFactory</dataTypeFactoryName>
+          <driver>org.postgresql.Driver</driver>
+          <url>jdbc:postgresql://localhost/kuzumeji</url>
+          <username>kuzumeji</username>
+          <password>happyhacking</password>
+          <type>CLEAN_INSERT</type>
+          <format>xls</format>
+        </configuration>
       </plugin>
       <plugin>
         <groupId>com.github.github</groupId>
@@ -78,30 +490,4 @@
       </plugin>
     </plugins>
   </build>
-  <properties>
-    <github.global.server>github</github.global.server>
-    <internal.repo.url>file:///home.nilcy/git/maven/repo</internal.repo.url>
-  </properties>
-  <url>https://github.com/nilcy/kuzumeji</url>
-  <modules>
-    <module>kuzumeji-framework</module>
-    <module>kuzumeji-domain</module>
-    <module>kuzumeji-application</module>
-  </modules>
-  <repositories>
-    <repository>
-      <id>internal-repo</id>
-      <url>https://raw.github.com/nilcy/maven/master/repo</url>
-      <releases>
-        <enabled>true</enabled>
-        <updatePolicy>always</updatePolicy>
-        <checksumPolicy>fail</checksumPolicy>
-      </releases>
-      <snapshots>
-        <enabled>true</enabled>
-        <updatePolicy>never</updatePolicy>
-        <checksumPolicy>fail</checksumPolicy>
-      </snapshots>
-    </repository>
-  </repositories>
 </project>
