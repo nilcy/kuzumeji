@@ -26,3 +26,16 @@ h2. 各モジュールのディレクトリ構造
 | src/test/filters   | テストリソースのフィルタ         |
 | src/site           | プロジェクトサイト              |
 
+h2. 統合開発環境(Eclipse)
+
+Eclipse設定(eclipse.ini)
+<pre>
+-XX:PermSize=256m
+-XX:MaxPermSize=256m
+-Xms1024m
+-Xmx1024m
+-Duser.language=en
+-Duser.name=nilcy
+</pre>
+
+
