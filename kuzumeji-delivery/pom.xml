@@ -11,9 +11,9 @@
   <packaging>pom</packaging>
   <name>kuzumeji-delivery</name>
   <modules>
-    <module>kuzumeji-master-registry</module>
-    <module>kuzumeji-master-provider</module>
-    <module>kuzumeji-master-consumer</module>
+    <module>kuzumeji-delivery-registry</module>
+    <module>kuzumeji-delivery-provider</module>
+    <module>kuzumeji-delivery-consumer</module>
   </modules>
   <description>Kuzumeji delivery.</description>
 </project>

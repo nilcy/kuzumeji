@@ -8,7 +8,6 @@
     <version>0.0.1-SNAPSHOT</version>
   </parent>
   <artifactId>kuzumeji-framework-enterprise</artifactId>
-  <packaging>ejb</packaging>
   <name>kuzumeji-framework-enterprise</name>
   <description>Kuzumeji Framework. Enterprise Module.</description>
   <dependencies>

@@ -7,10 +7,10 @@
     <artifactId>kuzumeji-delivery</artifactId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
-  <artifactId>kuzumeji-master-provider</artifactId>
-  <packaging>ejb</packaging>
-  <name>kuzumeji-master-provider</name>
-  <description>Kuzumeji Delivery. Master Provider Module.</description>
+  <artifactId>kuzumeji-delivery-consumer</artifactId>
+  <packaging>war</packaging>
+  <name>kuzumeji-delivery-consumer</name>
+  <description>Kuzumeji delivery. Consumer module.</description>
   <dependencies>
     <dependency>
       <groupId>javax</groupId>

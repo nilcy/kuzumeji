@@ -12,8 +12,8 @@ import org.junit.Test;
  */
 @SuppressWarnings("all")
 public class AppTest {
-  @Test
-  public void test() {
-    assertThat("testee", is("testee"));
-  }
+    @Test
+    public void test() {
+        assertThat("testee", is("testee"));
+    }
 }

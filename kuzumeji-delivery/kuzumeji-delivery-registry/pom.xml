@@ -7,9 +7,9 @@
     <artifactId>kuzumeji-delivery</artifactId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
-  <artifactId>kuzumeji-master-registry</artifactId>
-  <name>kuzumeji-master-registry</name>
-  <description>Kuzumeji Delivery. Master Registry Module.</description>
+  <artifactId>kuzumeji-delivery-registry</artifactId>
+  <name>kuzumeji-delivery-registry</name>
+  <description>Kuzumeji delivery. Registry module.</description>
   <dependencies>
     <dependency>
       <groupId>javax</groupId>
