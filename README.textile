@@ -1,21 +1,27 @@
 h1. Kuzumeji
 
-h2. Module
+h2. アーキテクチャ
+
+|_. モジュール      |_. モジュールの内容           |
+| platform      | インフラとシステム全体のサービス |
+| framework      | アプリ全体の共通ライブラリ |
+| delivery      | アプリケーションのサービス |
+| integration   | 対向システム統合とサービス |
+| support       | 開発プロセスのサポート |
 
 
-h2. Maven Standard Directory Layout 
+h2. 各モジュールのディレクトリ構造
 
-|_. DIRECTORY        |_. NOTE                        |
-| src/main/java      | Application/Library sources   |
-| src/main/resources | Application/Library resources |
-| src/main/filters   | Resource filter files         |
-| src/main/assembly  | Assembly descriptors          |
-| src/main/config    | Configuration files           |
-| src/main/scripts   | Application/Library scripts   |
-| src/main/webapp    | Web application sources       |
-| src/test/java      | Test sources                  |
-| src/test/resources | Test resources                |
-| src/test/filters   | Test resource filter files    |
-| src/site           | Site                          |
-
+|_. ディレクトリ      |_. ディレクトリの内容           |
+| src/main/java      | アプリ&ライブラリのメインコード |
+| src/main/resources | アプリ&ライブラリのメインリソース |
+| src/main/filters   | メインリソースのフィルタ         |
+| src/main/assembly  | アセンブリディスクリプタ         |
+| src/main/config    | コンフィグレーション           |
+| src/main/scripts   | アプリ/ライブラリのスクリプト   |
+| src/main/webapp    | Webアプリのメインソース         |
+| src/test/java      | アプリ&ライブラリのテストコード |
+| src/test/resources | アプリ&ライブラリのテストリソース |
+| src/test/filters   | テストリソースのフィルタ         |
+| src/site           | プロジェクトサイト              |
 
