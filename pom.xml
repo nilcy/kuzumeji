@@ -70,9 +70,9 @@
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <site.encoding>UTF-8</site.encoding>
     <github.global.server>github</github.global.server>
-    <kuzumeji.repo.url>file:///home.nilcy/git/maven/repo</kuzumeji.repo.url>
-    <kuzumeji.release.url>file:///home.nilcy/git/maven/release</kuzumeji.release.url>
-    <kuzumeji.snapshot.url>file:///home.nilcy/git/maven/snapshot</kuzumeji.snapshot.url>
+<!--     <kuzumeji.repository.url>file:///home.nilcy/git/kuzumeji-pages/repository</kuzumeji.repository.url> -->
+    <kuzumeji.release.url>file:///home.nilcy/git/kuzumeji-pages/release</kuzumeji.release.url>
+    <kuzumeji.snapshot.url>file:///home.nilcy/git/kuzumeji-pages/snapshot</kuzumeji.snapshot.url>
   </properties>
   <dependencyManagement>
     <dependencies>
@@ -200,9 +200,9 @@
       </snapshots>
     </repository>
     <repository>
-      <id>kuzumeji-repo</id>
-      <name>Kuzumeji Repository</name>
-      <url>https://raw.github.com/nilcy/maven/master/repo</url>
+      <id>kuzumeji-repository</id>
+      <name>Kuzumeji Internal Repository</name>
+      <url>http://nilcy.github.io/kuzumeji/repository</url>
       <releases>
         <enabled>true</enabled>
       </releases>
@@ -213,7 +213,7 @@
     <repository>
       <id>kuzumeji-release</id>
       <name>Kuzumeji Release Repository</name>
-      <url>https://raw.github.com/nilcy/maven/master/release</url>
+      <url>http://nilcy.github.io/kuzumeji/release</url>
       <releases>
         <enabled>true</enabled>
       </releases>
@@ -224,7 +224,7 @@
     <repository>
       <id>kuzumeji-snapshot</id>
       <name>Kuzumeji Snapshot Repository</name>
-      <url>https://raw.github.com/nilcy/maven/master/snapshot</url>
+      <url>http://nilcy.github.io/kuzumeji/release</url>
       <releases>
         <enabled>false</enabled>
       </releases>
