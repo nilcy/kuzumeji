@@ -4,7 +4,7 @@
 // http://www.gnu.org/licenses/gpl-3.0-standalone.html
 // ----------------------------------------------------------------------------
 /**
- * Enterprise Framework
+ * Master Domain | Screen Module
  * @author nilcy
  */
-package com.github.nilcy.kuzumeji.framework.standard;
+package com.github.nilcy.kuzumeji.master.screen;
