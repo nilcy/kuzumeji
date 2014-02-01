@@ -4,13 +4,13 @@
   <modelVersion>4.0.0</modelVersion>
   <parent>
     <groupId>com.github.nilcy</groupId>
-    <artifactId>kuzumeji-framework</artifactId>
+    <artifactId>kuzumeji-domain</artifactId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
-  <artifactId>kuzumeji-framework-enterprise</artifactId>
+  <artifactId>kuzumeji-master-service</artifactId>
   <packaging>ejb</packaging>
-  <name>kuzumeji-framework-enterprise</name>
-  <description>Kuzumeji Framework. Enterprise Module.</description>
+  <name>kuzumeji-master-service</name>
+  <description>Kuzumeji Domain. Master Service Module.</description>
   <dependencies>
     <dependency>
       <groupId>javax</groupId>
@@ -19,7 +19,7 @@
     </dependency>
     <dependency>
       <groupId>com.github.nilcy</groupId>
-      <artifactId>kuzumeji-framework-standard</artifactId>
+      <artifactId>kuzumeji-framework-enterprise</artifactId>
     </dependency>
     <dependency>
       <groupId>junit</groupId>
@@ -50,16 +50,6 @@
       <groupId>org.postgresql</groupId>
       <artifactId>postgresql</artifactId>
       <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>net.sf.ehcache</groupId>
-      <artifactId>ehcache-jcache</artifactId>
-      <exclusions>
-        <exclusion>
-          <groupId>org.slf4j</groupId>
-          <artifactId>slf4j-api</artifactId>
-        </exclusion>
-      </exclusions>
     </dependency>
   </dependencies>
 </project>

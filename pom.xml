@@ -140,6 +140,11 @@
         <artifactId>kuzumeji-framework-standard</artifactId>
         <version>0.0.1-SNAPSHOT</version>
       </dependency>
+      <dependency>
+        <groupId>com.github.nilcy</groupId>
+        <artifactId>kuzumeji-framework-enterprise</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+      </dependency>
     </dependencies>
   </dependencyManagement>
   <repositories>

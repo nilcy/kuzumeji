@@ -9,4 +9,7 @@
   <artifactId>kuzumeji-domain</artifactId>
   <packaging>pom</packaging>
   <name>kuzumeji-domain</name>
+  <modules>
+    <module>kuzumeji-master-service</module>
+  </modules>
 </project>

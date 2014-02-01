@@ -11,5 +11,7 @@
   <name>kuzumeji-framework</name>
   <modules>
     <module>kuzumeji-framework-coding</module>
+    <module>kuzumeji-framework-standard</module>
+    <module>kuzumeji-framework-enterprise</module>
   </modules>
 </project>
