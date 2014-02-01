@@ -10,4 +10,8 @@
   <packaging>pom</packaging>
   <name>kuzumeji-platform</name>
   <description>Kuzumeji platform.</description>
+  <modules>
+    <module>kuzumeji-platform-standard</module>
+    <module>kuzumeji-platform-enterprise</module>
+  </modules>
 </project>
