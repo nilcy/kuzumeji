@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+  <groupId>com.kuzumeji</groupId>
+  <artifactId>kuzumeji-integration-standard</artifactId>
+  <versioning>
+    <versions>
+      <version>0.0.1-SNAPSHOT</version>
+    </versions>
+    <lastUpdated>20140201174627</lastUpdated>
+  </versioning>
+</metadata>
