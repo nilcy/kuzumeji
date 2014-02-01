@@ -18,6 +18,10 @@
     </dependency>
     <dependency>
       <groupId>com.github.nilcy</groupId>
+      <artifactId>kuzumeji-platform-enterprise</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.github.nilcy</groupId>
       <artifactId>kuzumeji-integration-standard</artifactId>
     </dependency>
     <dependency>
@@ -46,9 +50,8 @@
       <scope>test</scope>
     </dependency>
     <dependency>
-      <groupId>org.postgresql</groupId>
-      <artifactId>postgresql</artifactId>
-      <scope>test</scope>
+      <groupId>org.apache.derby</groupId>
+      <artifactId>derby</artifactId>
     </dependency>
     <dependency>
       <groupId>net.sf.ehcache</groupId>
