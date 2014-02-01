@@ -2,7 +2,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>com.github.nilcy</groupId>
+  <groupId>com.kuzumeji</groupId>
   <artifactId>kuzumeji</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>pom</packaging>
@@ -144,47 +144,47 @@
         <version>1.5.0-0.5</version>
       </dependency>
       <dependency>
-        <groupId>com.github.nilcy</groupId>
+        <groupId>com.kuzumeji</groupId>
         <artifactId>kuzumeji-platform-standard</artifactId>
         <version>0.0.1-SNAPSHOT</version>
       </dependency>
       <dependency>
-        <groupId>com.github.nilcy</groupId>
+        <groupId>com.kuzumeji</groupId>
         <artifactId>kuzumeji-platform-enterprise</artifactId>
         <version>0.0.1-SNAPSHOT</version>
       </dependency>
       <dependency>
-        <groupId>com.github.nilcy</groupId>
+        <groupId>com.kuzumeji</groupId>
         <artifactId>kuzumeji-integration-standard</artifactId>
         <version>0.0.1-SNAPSHOT</version>
       </dependency>
       <dependency>
-        <groupId>com.github.nilcy</groupId>
+        <groupId>com.kuzumeji</groupId>
         <artifactId>kuzumeji-integration-enterprise</artifactId>
         <version>0.0.1-SNAPSHOT</version>
       </dependency>
       <dependency>
-        <groupId>com.github.nilcy</groupId>
+        <groupId>com.kuzumeji</groupId>
         <artifactId>kuzumeji-framework-standard</artifactId>
         <version>0.0.1-SNAPSHOT</version>
       </dependency>
       <dependency>
-        <groupId>com.github.nilcy</groupId>
+        <groupId>com.kuzumeji</groupId>
         <artifactId>kuzumeji-framework-enterprise</artifactId>
         <version>0.0.1-SNAPSHOT</version>
       </dependency>
       <dependency>
-        <groupId>com.github.nilcy</groupId>
+        <groupId>com.kuzumeji</groupId>
         <artifactId>kuzumeji-delivery-registry</artifactId>
         <version>0.0.1-SNAPSHOT</version>
       </dependency>
       <dependency>
-        <groupId>com.github.nilcy</groupId>
+        <groupId>com.kuzumeji</groupId>
         <artifactId>kuzumeji-delivery-provider</artifactId>
         <version>0.0.1-SNAPSHOT</version>
       </dependency>
       <dependency>
-        <groupId>com.github.nilcy</groupId>
+        <groupId>com.kuzumeji</groupId>
         <artifactId>kuzumeji-delivery-consumer</artifactId>
         <version>0.0.1-SNAPSHOT</version>
       </dependency>

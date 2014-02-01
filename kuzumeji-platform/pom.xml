@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <parent>
         <artifactId>kuzumeji</artifactId>
-        <groupId>com.github.nilcy</groupId>
+        <groupId>com.kuzumeji</groupId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
   <artifactId>kuzumeji-platform</artifactId>

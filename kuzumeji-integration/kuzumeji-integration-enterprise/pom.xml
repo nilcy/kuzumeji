@@ -4,7 +4,7 @@
 	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<groupId>com.github.nilcy</groupId>
+		<groupId>com.kuzumeji</groupId>
 		<artifactId>kuzumeji-integration</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
@@ -18,11 +18,11 @@
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
-			<groupId>com.github.nilcy</groupId>
+			<groupId>com.kuzumeji</groupId>
 			<artifactId>kuzumeji-platform-enterprise</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>com.github.nilcy</groupId>
+			<groupId>com.kuzumeji</groupId>
 			<artifactId>kuzumeji-integration-standard</artifactId>
 		</dependency>
 		<dependency>
