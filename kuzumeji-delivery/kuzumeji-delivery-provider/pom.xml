@@ -22,6 +22,10 @@
       <artifactId>kuzumeji-framework-enterprise</artifactId>
     </dependency>
     <dependency>
+      <groupId>com.kuzumeji</groupId>
+      <artifactId>kuzumeji-delivery-registry</artifactId>
+    </dependency>
+    <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <scope>test</scope>

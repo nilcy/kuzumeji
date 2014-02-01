@@ -3,7 +3,7 @@
 // GNU GENERAL PUBLIC LICENSE Version 3, 29 June 2007
 // http://www.gnu.org/licenses/gpl-3.0-standalone.html
 // ----------------------------------------------------------------------------
-package com.kuzumeji.service;
+package com.kuzumeji.provider;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

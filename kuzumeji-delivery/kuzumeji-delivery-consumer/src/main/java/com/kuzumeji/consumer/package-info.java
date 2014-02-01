@@ -4,7 +4,7 @@
 // http://www.gnu.org/licenses/gpl-3.0-standalone.html
 // ----------------------------------------------------------------------------
 /**
- * Master Domain | Screen Module
+ * Delivery Consumer.
  * @author nilcy
  */
 package com.kuzumeji.consumer;

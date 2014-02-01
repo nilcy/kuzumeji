@@ -4,7 +4,7 @@
 // http://www.gnu.org/licenses/gpl-3.0-standalone.html
 // ----------------------------------------------------------------------------
 /**
- * Master Domain | Service Module
+ * Delivery Registry.
  * @author nilcy
  */
-package com.kuzumeji.service;
+package com.kuzumeji.delivery.registry;
