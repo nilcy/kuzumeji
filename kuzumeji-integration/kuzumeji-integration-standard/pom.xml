@@ -4,13 +4,13 @@
   <modelVersion>4.0.0</modelVersion>
   <parent>
     <groupId>com.github.nilcy</groupId>
-    <artifactId>kuzumeji-framework</artifactId>
+    <artifactId>kuzumeji-integration</artifactId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
-  <artifactId>kuzumeji-framework-standard</artifactId>
+  <artifactId>kuzumeji-integration-standard</artifactId>
   <packaging>jar</packaging>
-  <name>kuzumeji-framework-standard</name>
-  <description>Kuzumeji framework. Standard module.</description>
+  <name>kuzumeji-integration-standard</name>
+  <description>Kuzumeji integration. Standard module.</description>
   <dependencies>
     <dependency>
       <groupId>junit</groupId>

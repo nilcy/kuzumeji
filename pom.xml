@@ -30,8 +30,8 @@
     </developer>
   </developers>
   <modules>
-    <module>kuzumeji-platform</module>
     <module>kuzumeji-support</module>
+    <module>kuzumeji-platform</module>
     <module>kuzumeji-integration</module>
     <module>kuzumeji-framework</module>
     <module>kuzumeji-delivery</module>
@@ -142,6 +142,16 @@
         <groupId>net.sf.ehcache</groupId>
         <artifactId>ehcache-jcache</artifactId>
         <version>1.5.0-0.5</version>
+      </dependency>
+      <dependency>
+        <groupId>com.github.nilcy</groupId>
+        <artifactId>kuzumeji-integration-standard</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+      </dependency>
+      <dependency>
+        <groupId>com.github.nilcy</groupId>
+        <artifactId>kuzumeji-integration-enterprise</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
       </dependency>
       <dependency>
         <groupId>com.github.nilcy</groupId>

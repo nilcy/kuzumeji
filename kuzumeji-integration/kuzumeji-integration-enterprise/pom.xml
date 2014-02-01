@@ -4,12 +4,12 @@
   <modelVersion>4.0.0</modelVersion>
   <parent>
     <groupId>com.github.nilcy</groupId>
-    <artifactId>kuzumeji-framework</artifactId>
+    <artifactId>kuzumeji-integration</artifactId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
-  <artifactId>kuzumeji-framework-enterprise</artifactId>
-  <name>kuzumeji-framework-enterprise</name>
-  <description>Kuzumeji framework. Enterprise module.</description>
+  <artifactId>kuzumeji-integration-enterprise</artifactId>
+  <name>kuzumeji-integration-enterprise</name>
+  <description>Kuzumeji integration. Enterprise module.</description>
   <dependencies>
     <dependency>
       <groupId>javax</groupId>
@@ -18,7 +18,7 @@
     </dependency>
     <dependency>
       <groupId>com.github.nilcy</groupId>
-      <artifactId>kuzumeji-framework-standard</artifactId>
+      <artifactId>kuzumeji-integration-standard</artifactId>
     </dependency>
     <dependency>
       <groupId>junit</groupId>
