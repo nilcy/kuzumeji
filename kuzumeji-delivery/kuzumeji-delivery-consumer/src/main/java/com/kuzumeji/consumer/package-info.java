@@ -4,7 +4,7 @@
 // http://www.gnu.org/licenses/gpl-3.0-standalone.html
 // ----------------------------------------------------------------------------
 /**
- * Delivery Consumer.
+ * Delivery Consumer
  * @author nilcy
  */
 package com.kuzumeji.consumer;

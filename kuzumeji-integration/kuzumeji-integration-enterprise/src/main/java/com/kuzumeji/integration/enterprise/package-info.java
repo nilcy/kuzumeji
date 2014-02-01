@@ -4,7 +4,7 @@
 // http://www.gnu.org/licenses/gpl-3.0-standalone.html
 // ----------------------------------------------------------------------------
 /**
- * Enterprise Framework
+ * Enterprise Integration
  * @author nilcy
  */
 package com.kuzumeji.integration.enterprise;

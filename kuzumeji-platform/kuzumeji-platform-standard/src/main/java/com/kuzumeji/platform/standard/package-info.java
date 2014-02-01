@@ -4,7 +4,7 @@
 // http://www.gnu.org/licenses/gpl-3.0-standalone.html
 // ----------------------------------------------------------------------------
 /**
- * Standard Framework
+ * Standard Platform
  * @author nilcy
  */
 package com.kuzumeji.platform.standard;

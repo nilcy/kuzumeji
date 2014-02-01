@@ -3,20 +3,8 @@
 // GNU GENERAL PUBLIC LICENSE Version 3, 29 June 2007
 // http://www.gnu.org/licenses/gpl-3.0-standalone.html
 // ----------------------------------------------------------------------------
-package com.kuzumeji.framework.coding;
 /**
- * App
+ * Registry Component
  * @author nilcy
  */
-public final class App {
-    /** コンストラクタ */
-    private App() {
-    }
-    /**
-     * Say hello.
-     * @return "Hello, world."
-     */
-    public static String sayHello() {
-        return "Hello, world.";
-    }
-}
+package com.kuzumeji.registry;

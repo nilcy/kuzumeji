@@ -4,7 +4,7 @@
 // http://www.gnu.org/licenses/gpl-3.0-standalone.html
 // ----------------------------------------------------------------------------
 /**
- * Delivery Provider.
+ * Provider Component
  * @author nilcy
  */
 package com.kuzumeji.provider;

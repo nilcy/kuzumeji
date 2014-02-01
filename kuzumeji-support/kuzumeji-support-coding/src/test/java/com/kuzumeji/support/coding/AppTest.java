@@ -3,8 +3,19 @@
 // GNU GENERAL PUBLIC LICENSE Version 3, 29 June 2007
 // http://www.gnu.org/licenses/gpl-3.0-standalone.html
 // ----------------------------------------------------------------------------
+package com.kuzumeji.support.coding;
+import static org.hamcrest.CoreMatchers.*;
+import static org.junit.Assert.*;
+import org.junit.Test;
+import com.kuzumeji.support.coding.App;
 /**
- * Delivery Registry.
+ * @see App
  * @author nilcy
  */
-package com.kuzumeji.delivery.registry;
+@SuppressWarnings("all")
+public class AppTest {
+    @Test
+    public void test() {
+        assertThat(App.sayHello(), is("Hello, world."));
+    }
+}
