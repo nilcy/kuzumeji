@@ -10,6 +10,8 @@
   <packaging>pom</packaging>
   <name>kuzumeji-domain</name>
   <modules>
+    <module>kuzumeji-master-service-api</module>
     <module>kuzumeji-master-service</module>
+    <module>kuzumeji-master-screen</module>
   </modules>
 </project>
