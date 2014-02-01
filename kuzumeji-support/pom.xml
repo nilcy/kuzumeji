@@ -10,4 +10,7 @@
   <packaging>pom</packaging>
   <name>kuzumeji-support</name>
   <description>Kuzumeji support.</description>
+  <modules>
+    <module>kuzumeji-support-coding</module>
+  </modules>
 </project>
