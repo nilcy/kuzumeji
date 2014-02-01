@@ -1,0 +1,10 @@
+com.kuzumeji.consumer
+com.kuzumeji.framework.enterprise
+com.kuzumeji.framework.standard
+com.kuzumeji.integration.enterprise
+com.kuzumeji.integration.standard
+com.kuzumeji.platform.enterprise
+com.kuzumeji.platform.standard
+com.kuzumeji.provider
+com.kuzumeji.registry
+com.kuzumeji.support.coding

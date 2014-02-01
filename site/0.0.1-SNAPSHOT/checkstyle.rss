@@ -1,0 +1,317 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<rss version="0.91">
+  <channel>
+    <title>kuzumeji - Checkstyle report</title>
+    <link>https://github.com/nilcy/kuzumeji</link>
+    <description>kuzumeji - Checkstyle report</description>
+    <language>en-us</language>
+    <copyright>&#169;2014 nilcy</copyright>
+    <item>
+      <title>File: 20,
+             Errors: 0,
+             Warnings: 45,
+             Infos: 0
+      </title>
+            <link>https://github.com/nilcy/kuzumeji/checkstyle.html</link>
+      <description>
+        <p>Click <a href="https://github.com/nilcy/kuzumeji/checkstyle.html">here</a> for the full Checkstyle report.</p>
+
+        <table summary="Files" boder="1">
+          <thead>
+            <tr>
+              <th>Files</th>
+              <th style="width:30px;"><abbr title="Info">I</abbr></th>
+              <th style="width:30px;"><abbr title="Warning">W</abbr></th>
+              <th style="width:30px;"><abbr title="Error">E</abbr></th>
+            </tr>
+          </thead>
+          <tbody>
+                          <tr>
+                <td>
+                  <a href="https://github.com/nilcy/kuzumeji/checkstyle.html#com.kuzumeji.platform.enterprise.package-info.java">com/kuzumeji/platform/enterprise/package-info.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/nilcy/kuzumeji/checkstyle.html#com.kuzumeji.support.coding.package-info.java">com/kuzumeji/support/coding/package-info.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/nilcy/kuzumeji/checkstyle.html#com.kuzumeji.registry.App.java">com/kuzumeji/registry/App.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  7
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/nilcy/kuzumeji/checkstyle.html#com.kuzumeji.integration.enterprise.package-info.java">com/kuzumeji/integration/enterprise/package-info.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/nilcy/kuzumeji/checkstyle.html#com.kuzumeji.platform.standard.App.java">com/kuzumeji/platform/standard/App.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/nilcy/kuzumeji/checkstyle.html#com.kuzumeji.framework.standard.App.java">com/kuzumeji/framework/standard/App.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  5
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/nilcy/kuzumeji/checkstyle.html#com.kuzumeji.integration.enterprise.App.java">com/kuzumeji/integration/enterprise/App.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  4
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/nilcy/kuzumeji/checkstyle.html#com.kuzumeji.registry.package-info.java">com/kuzumeji/registry/package-info.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/nilcy/kuzumeji/checkstyle.html#com.kuzumeji.framework.standard.package-info.java">com/kuzumeji/framework/standard/package-info.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/nilcy/kuzumeji/checkstyle.html#com.kuzumeji.consumer.package-info.java">com/kuzumeji/consumer/package-info.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/nilcy/kuzumeji/checkstyle.html#com.kuzumeji.integration.standard.App.java">com/kuzumeji/integration/standard/App.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  3
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/nilcy/kuzumeji/checkstyle.html#com.kuzumeji.provider.package-info.java">com/kuzumeji/provider/package-info.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/nilcy/kuzumeji/checkstyle.html#com.kuzumeji.provider.App.java">com/kuzumeji/provider/App.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  8
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/nilcy/kuzumeji/checkstyle.html#com.kuzumeji.support.coding.App.java">com/kuzumeji/support/coding/App.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/nilcy/kuzumeji/checkstyle.html#com.kuzumeji.framework.enterprise.App.java">com/kuzumeji/framework/enterprise/App.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  6
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/nilcy/kuzumeji/checkstyle.html#com.kuzumeji.platform.enterprise.App.java">com/kuzumeji/platform/enterprise/App.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  2
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/nilcy/kuzumeji/checkstyle.html#com.kuzumeji.framework.enterprise.package-info.java">com/kuzumeji/framework/enterprise/package-info.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/nilcy/kuzumeji/checkstyle.html#com.kuzumeji.platform.standard.package-info.java">com/kuzumeji/platform/standard/package-info.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/nilcy/kuzumeji/checkstyle.html#com.kuzumeji.integration.standard.package-info.java">com/kuzumeji/integration/standard/package-info.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/nilcy/kuzumeji/checkstyle.html#com.kuzumeji.consumer.App.java">com/kuzumeji/consumer/App.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  9
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                      </tbody>
+        </table>
+        
+      </description>
+    </item>
+  </channel>
+</rss>
+
