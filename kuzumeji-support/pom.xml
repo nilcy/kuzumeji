@@ -6,12 +6,7 @@
         <groupId>com.github.nilcy</groupId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
-  <artifactId>kuzumeji-domain</artifactId>
+  <artifactId>kuzumeji-support</artifactId>
   <packaging>pom</packaging>
-  <name>kuzumeji-domain</name>
-  <modules>
-    <module>kuzumeji-master-service-api</module>
-    <module>kuzumeji-master-service</module>
-    <module>kuzumeji-master-screen</module>
-  </modules>
+  <name>kuzumeji-support</name>
 </project>

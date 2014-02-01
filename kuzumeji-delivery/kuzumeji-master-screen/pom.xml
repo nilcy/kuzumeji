@@ -4,13 +4,13 @@
   <modelVersion>4.0.0</modelVersion>
   <parent>
     <groupId>com.github.nilcy</groupId>
-    <artifactId>kuzumeji-domain</artifactId>
+    <artifactId>kuzumeji-delivery</artifactId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
-  <artifactId>kuzumeji-master-service-api</artifactId>
+  <artifactId>kuzumeji-master-screen</artifactId>
   <packaging>ejb</packaging>
-  <name>kuzumeji-master-service-api</name>
-  <description>Kuzumeji Domain. Master Service-API Module.</description>
+  <name>kuzumeji-master-screen</name>
+  <description>Kuzumeji Domain. Master Screen Module.</description>
   <dependencies>
     <dependency>
       <groupId>javax</groupId>
