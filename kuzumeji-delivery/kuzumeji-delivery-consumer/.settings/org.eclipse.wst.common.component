@@ -7,6 +7,12 @@
         <dependent-module archiveName="kuzumeji-framework-enterprise-0.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/kuzumeji-framework-enterprise/kuzumeji-framework-enterprise">
             <dependency-type>uses</dependency-type>
         </dependent-module>
+        <dependent-module archiveName="kuzumeji-integration-standard-0.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/kuzumeji-integration-standard/kuzumeji-integration-standard">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="kuzumeji-platform-standard-0.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/kuzumeji-platform-standard/kuzumeji-platform-standard">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
         <dependent-module archiveName="kuzumeji-framework-standard-0.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/kuzumeji-framework-standard/kuzumeji-framework-standard">
             <dependency-type>uses</dependency-type>
         </dependent-module>
