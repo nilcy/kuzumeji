@@ -153,6 +153,21 @@
         <artifactId>kuzumeji-framework-enterprise</artifactId>
         <version>0.0.1-SNAPSHOT</version>
       </dependency>
+      <dependency>
+        <groupId>com.github.nilcy</groupId>
+        <artifactId>kuzumeji-delivery-registry</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+      </dependency>
+      <dependency>
+        <groupId>com.github.nilcy</groupId>
+        <artifactId>kuzumeji-delivery-provider</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+      </dependency>
+      <dependency>
+        <groupId>com.github.nilcy</groupId>
+        <artifactId>kuzumeji-delivery-consumer</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+      </dependency>
     </dependencies>
   </dependencyManagement>
   <repositories>
