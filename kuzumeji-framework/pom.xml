@@ -14,4 +14,5 @@
     <module>kuzumeji-framework-standard</module>
     <module>kuzumeji-framework-enterprise</module>
   </modules>
+  <description>Kuzumeji framework.</description>
 </project>

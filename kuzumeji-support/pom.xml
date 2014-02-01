@@ -9,4 +9,5 @@
   <artifactId>kuzumeji-support</artifactId>
   <packaging>pom</packaging>
   <name>kuzumeji-support</name>
+  <description>Kuzumeji support.</description>
 </project>

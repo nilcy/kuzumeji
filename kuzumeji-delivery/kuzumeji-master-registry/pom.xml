@@ -7,10 +7,9 @@
     <artifactId>kuzumeji-delivery</artifactId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
-  <artifactId>kuzumeji-master-service</artifactId>
-  <packaging>ejb</packaging>
-  <name>kuzumeji-master-service</name>
-  <description>Kuzumeji Domain. Master Service Module.</description>
+  <artifactId>kuzumeji-master-registry</artifactId>
+  <name>kuzumeji-master-registry</name>
+  <description>Kuzumeji Delivery. Master Registry Module.</description>
   <dependencies>
     <dependency>
       <groupId>javax</groupId>

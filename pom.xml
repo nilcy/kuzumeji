@@ -31,11 +31,11 @@
   </developers>
   <modules>
     <module>kuzumeji-platform</module>
+    <module>kuzumeji-support</module>
     <module>kuzumeji-integration</module>
     <module>kuzumeji-framework</module>
     <module>kuzumeji-delivery</module>
     <module>kuzumeji-application</module>
-    <module>kuzumeji-support</module>
   </modules>
   <scm>
     <connection>scm:git:git://github.com/nilcy/kuzumeji.git</connection>

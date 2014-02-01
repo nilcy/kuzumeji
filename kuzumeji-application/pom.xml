@@ -9,4 +9,5 @@
   <artifactId>kuzumeji-application</artifactId>
   <packaging>pom</packaging>
   <name>kuzumeji-application</name>
+  <description>Kuzumeji application.</description>
 </project>
