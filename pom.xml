@@ -482,7 +482,7 @@
               <artifactId>maven-checkstyle-plugin</artifactId>
               <version>2.9.1</version>
               <configuration>
-                <configLocation>kuzumeji-framework/kuzumeji-framework-coding/src/main/config/Checkstyle.xml</configLocation>
+                <configLocation>kuzumeji-support/kuzumeji-support-coding/src/main/config/Java/Checkstyle.xml</configLocation>
               </configuration>
             </plugin>
           </reportPlugins>

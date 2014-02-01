@@ -4,7 +4,7 @@
 // http://www.gnu.org/licenses/gpl-3.0-standalone.html
 // ----------------------------------------------------------------------------
 /**
- * Coding Framework
+ * Coding Support.
  * @author nilcy
  */
 package com.kuzumeji.framework.coding;

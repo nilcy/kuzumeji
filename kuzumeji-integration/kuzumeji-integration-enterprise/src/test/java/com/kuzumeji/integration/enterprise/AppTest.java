@@ -8,12 +8,13 @@ import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.*;
 import org.junit.Test;
 /**
+ * @see App
  * @author nilcy
  */
 @SuppressWarnings("all")
 public class AppTest {
     @Test
     public void test() {
-        assertThat("testee", is("testee"));
+        assertThat(App.sayHello(), is("Hello, world."));
     }
 }
