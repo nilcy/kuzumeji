@@ -18,6 +18,7 @@
     <module name="PackageAnnotation"/>
     <module name="SuppressWarnings"/>
     <module name="JavadocMethod">
+      <property name="allowThrowsTagsForSubclasses" value="true"/>
       <property name="suppressLoadErrors" value="true"/>
     </module>
     <module name="JavadocStyle">
