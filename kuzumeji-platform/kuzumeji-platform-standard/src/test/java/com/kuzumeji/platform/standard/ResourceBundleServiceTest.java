@@ -21,7 +21,6 @@ public class ResourceBundleServiceTest {
     public final void testPlatform() {
         assertThat(canonicalName, is("com.kuzumeji.platform.standard.ResourceBundleServiceTest"));
         assertThat(Locale.getDefault().getLanguage(), is("ja"));
-        assertThat(Locale.getDefault().getCountry(), is("JP"));
     }
     /**
      * @see ResourceBundleService#ResourceBundleService(String)
@@ -40,8 +39,8 @@ public class ResourceBundleServiceTest {
      */
     @Test
     public final void testLocaleGet() {
-        final ResourceBundleService testee = new ResourceBundleService(canonicalName, new Locale(
-            "en", "US"));
+        final ResourceBundleService testee = new ResourceBundleService(canonicalName,
+            Locale.ENGLISH);
         final ResourceBundle bundle = testee.getBundle();
         assertThat(bundle.getString("lang"), is("English"));
         assertThat(bundle.getString("country"), is("USA"));

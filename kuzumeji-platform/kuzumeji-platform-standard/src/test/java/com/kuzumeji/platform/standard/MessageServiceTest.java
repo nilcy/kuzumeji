@@ -30,7 +30,7 @@ public class MessageServiceTest {
      */
     @Test
     public final void testLocaleBuild() {
-        final MessageService testee = new MessageService(canonicalName, new Locale("en", "US"));
+        final MessageService testee = new MessageService(canonicalName, Locale.ENGLISH);
         assertThat(testee.build("hello", "Steve Vai"), is("Hello, Steve Vai."));
     }
 }
