@@ -6,7 +6,7 @@
       <pattern>%date{HH:mm:ss.SSS} %-5level %logger - %message%n</pattern>
     </encoder>
   </appender>
-  <logger name="com.github.nilcy.kuzumeji" level="TRACE"/>
+  <logger name="com.kuzumeji" level="TRACE"/>
   <root level="INFO">
     <appender-ref ref="CONSOLE" />
   </root>
