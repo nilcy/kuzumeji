@@ -5,13 +5,13 @@
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>com.kuzumeji</groupId>
-		<artifactId>kuzumeji-delivery</artifactId>
+		<artifactId>kuzumeji-shared</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	<artifactId>kuzumeji-delivery-consumer</artifactId>
+	<artifactId>kuzumeji-shared-consumer</artifactId>
 	<packaging>war</packaging>
-	<name>kuzumeji-delivery-consumer</name>
-	<description>Kuzumeji delivery. Consumer module.</description>
+	<name>kuzumeji-shared-consumer</name>
+	<description>Kuzumeji shared. Consumer module.</description>
 	<dependencies>
 		<dependency>
 			<groupId>javax</groupId>

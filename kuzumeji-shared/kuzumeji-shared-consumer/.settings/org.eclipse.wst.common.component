@@ -16,7 +16,7 @@
         <dependent-module archiveName="kuzumeji-framework-standard-0.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/kuzumeji-framework-standard/kuzumeji-framework-standard">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <property name="context-root" value="kuzumeji-delivery-consumer"/>
         <property name="java-output-path" value="/kuzumeji-delivery-consumer/target/classes"/>
+        <property name="context-root" value="kuzumeji-shared-consumer"/>
     </wb-module>
 </project-modules>

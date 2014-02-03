@@ -4,13 +4,12 @@
   <modelVersion>4.0.0</modelVersion>
   <parent>
     <groupId>com.kuzumeji</groupId>
-    <artifactId>kuzumeji-delivery</artifactId>
+    <artifactId>kuzumeji-shared</artifactId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
-  <artifactId>kuzumeji-delivery-provider</artifactId>
-  <packaging>ejb</packaging>
-  <name>kuzumeji-delivery-provider</name>
-  <description>Kuzumeji delivery. Provider module.</description>
+  <artifactId>kuzumeji-shared-registry</artifactId>
+  <name>kuzumeji-shared-registry</name>
+  <description>Kuzumeji shared. Registry module.</description>
   <dependencies>
     <dependency>
       <groupId>javax</groupId>
@@ -20,10 +19,6 @@
     <dependency>
       <groupId>com.kuzumeji</groupId>
       <artifactId>kuzumeji-framework-enterprise</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>com.kuzumeji</groupId>
-      <artifactId>kuzumeji-delivery-registry</artifactId>
     </dependency>
     <dependency>
       <groupId>junit</groupId>
@@ -53,7 +48,6 @@
     <dependency>
       <groupId>org.apache.derby</groupId>
       <artifactId>derby</artifactId>
-      <scope>test</scope>
     </dependency>
   </dependencies>
 </project>

@@ -6,14 +6,14 @@
     <groupId>com.kuzumeji</groupId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
-  <artifactId>kuzumeji-delivery</artifactId>
+  <artifactId>kuzumeji-shared</artifactId>
   <packaging>pom</packaging>
-  <name>kuzumeji-delivery</name>
+  <name>kuzumeji-shared</name>
   <modules>
-    <module>kuzumeji-delivery-registry</module>
-    <module>kuzumeji-delivery-provider</module>
-    <module>kuzumeji-delivery-consumer</module>
+    <module>kuzumeji-shared-registry</module>
+    <module>kuzumeji-shared-provider</module>
+    <module>kuzumeji-shared-consumer</module>
     
   </modules>
-  <description>Kuzumeji delivery.</description>
+  <description>Kuzumeji shared.</description>
 </project>

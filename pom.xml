@@ -34,7 +34,7 @@
 		<module>kuzumeji-platform</module>
 		<module>kuzumeji-integration</module>
 		<module>kuzumeji-framework</module>
-		<module>kuzumeji-delivery</module>
+		<module>kuzumeji-shared</module>
 		<module>kuzumeji-application</module>
 	</modules>
 	<scm>
@@ -175,17 +175,17 @@
 			</dependency>
 			<dependency>
 				<groupId>com.kuzumeji</groupId>
-				<artifactId>kuzumeji-delivery-registry</artifactId>
+				<artifactId>kuzumeji-shared-registry</artifactId>
 				<version>0.0.1-SNAPSHOT</version>
 			</dependency>
 			<dependency>
 				<groupId>com.kuzumeji</groupId>
-				<artifactId>kuzumeji-delivery-provider</artifactId>
+				<artifactId>kuzumeji-shared-provider</artifactId>
 				<version>0.0.1-SNAPSHOT</version>
 			</dependency>
 			<dependency>
 				<groupId>com.kuzumeji</groupId>
-				<artifactId>kuzumeji-delivery-consumer</artifactId>
+				<artifactId>kuzumeji-shared-consumer</artifactId>
 				<version>0.0.1-SNAPSHOT</version>
 			</dependency>
 		</dependencies>
