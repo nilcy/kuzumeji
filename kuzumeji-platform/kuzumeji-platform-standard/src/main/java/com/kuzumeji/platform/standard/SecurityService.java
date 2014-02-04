@@ -9,7 +9,6 @@ import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.math.BigInteger;
 import java.security.InvalidAlgorithmParameterException;
 import java.security.InvalidKeyException;
 import java.security.KeyFactory;
@@ -24,8 +23,8 @@ import java.security.SignatureException;
 import java.security.interfaces.RSAPrivateKey;
 import java.security.interfaces.RSAPublicKey;
 import java.security.spec.InvalidKeySpecException;
-import java.security.spec.RSAPrivateKeySpec;
-import java.security.spec.RSAPublicKeySpec;
+import java.security.spec.PKCS8EncodedKeySpec;
+import java.security.spec.X509EncodedKeySpec;
 import java.util.Properties;
 import javax.crypto.BadPaddingException;
 import javax.crypto.Cipher;
@@ -47,14 +46,10 @@ import org.apache.commons.codec.binary.Hex;
  */
 @SuppressWarnings("static-method")
 public final class SecurityService implements Service {
-    /** 公開鍵/モジュラスのキー */
-    private static final String KEY_PUBLIC_MODULUS = "%s.public.modulus";
-    /** 公開鍵/公開指数のキー */
-    private static final String KEY_PUBLIC_EXPONENT = "%s.public.exponent";
-    /** 秘密鍵/モジュラスのキー */
-    private static final String KEY_PRIVATE_MODULUS = "%s.private.modulus";
-    /** 秘密鍵/公開指数のキー */
-    private static final String KEY_PRIVATE_EXPONENT = "%s.private.exponent";
+    /** 公開鍵のキー */
+    private static final String KEY_PUBLIC_ENCODED = "%s.public";
+    /** 秘密鍵のキー */
+    private static final String KEY_PRIVATE_ENCODED = "%s.private";
     /** RSA方式名 */
     private static final String RSA_ALGO_NAME = "RSA";
     /** 鍵長 */
@@ -110,18 +105,14 @@ public final class SecurityService implements Service {
         try {
             final Properties property = new PropertyService(PROPERTY_NAME).getProperty();
             final RSAPublicKey publicKey = (RSAPublicKey) keyPair.getPublic();
-            property.setProperty(String.format(KEY_PUBLIC_MODULUS, name),
-                Hex.encodeHexString(publicKey.getModulus().toByteArray()));
-            property.setProperty(String.format(KEY_PUBLIC_EXPONENT, name),
-                Hex.encodeHexString(publicKey.getPublicExponent().toByteArray()));
+            property.setProperty(String.format(KEY_PUBLIC_ENCODED, name),
+                Hex.encodeHexString(publicKey.getEncoded()));
             final RSAPrivateKey privateKey = (RSAPrivateKey) keyPair.getPrivate();
-            property.setProperty(String.format(KEY_PRIVATE_MODULUS, name),
-                Hex.encodeHexString(privateKey.getModulus().toByteArray()));
-            property.setProperty(String.format(KEY_PRIVATE_EXPONENT, name),
-                Hex.encodeHexString(privateKey.getPrivateExponent().toByteArray()));
+            property.setProperty(String.format(KEY_PRIVATE_ENCODED, name),
+                Hex.encodeHexString(privateKey.getEncoded()));
             try (FileOutputStream stream = new FileOutputStream(Thread.currentThread()
                 .getContextClassLoader().getResource(PROPERTY_NAME).getPath());) {
-                property.store(stream, "key pair saved.");
+                property.store(stream, "RSAPublicKey and RSAPrivateKey");
             }
         } catch (final IOException e) {
             throw new RuntimeException(e);
@@ -139,22 +130,13 @@ public final class SecurityService implements Service {
     public KeyPair loadKeyPair(final String name) {
         try {
             final Properties property = new PropertyService(PROPERTY_NAME).getProperty();
-            final byte[] publicModulus = Hex.decodeHex(property.getProperty(
-                String.format(KEY_PUBLIC_MODULUS, name)).toCharArray());
-            final byte[] publicExponent = Hex.decodeHex(property.getProperty(
-                String.format(KEY_PUBLIC_EXPONENT, name)).toCharArray());
-            final byte[] privateModulus = Hex.decodeHex(property.getProperty(
-                String.format(KEY_PRIVATE_MODULUS, name)).toCharArray());
-            final byte[] privateExponent = Hex.decodeHex(property.getProperty(
-                String.format(KEY_PRIVATE_EXPONENT, name)).toCharArray());
-            final RSAPublicKey publicKey = (RSAPublicKey) KeyFactory.getInstance(RSA_ALGO_NAME)
-                .generatePublic(
-                    new RSAPublicKeySpec(new BigInteger(publicModulus), new BigInteger(
-                        publicExponent)));
-            final RSAPrivateKey privateKey = (RSAPrivateKey) KeyFactory.getInstance(RSA_ALGO_NAME)
-                .generatePrivate(
-                    new RSAPrivateKeySpec(new BigInteger(privateModulus), new BigInteger(
-                        privateExponent)));
+            final KeyFactory keyFactory = KeyFactory.getInstance(RSA_ALGO_NAME);
+            final RSAPublicKey publicKey = (RSAPublicKey) keyFactory
+                .generatePublic(new X509EncodedKeySpec(Hex.decodeHex(property.getProperty(
+                    String.format(KEY_PUBLIC_ENCODED, name)).toCharArray())));
+            final RSAPrivateKey privateKey = (RSAPrivateKey) keyFactory
+                .generatePrivate(new PKCS8EncodedKeySpec(Hex.decodeHex(property.getProperty(
+                    String.format(KEY_PRIVATE_ENCODED, name)).toCharArray())));
             return new KeyPair(publicKey, privateKey);
         } catch (final IOException | DecoderException | InvalidKeySpecException
             | NoSuchAlgorithmException e) {

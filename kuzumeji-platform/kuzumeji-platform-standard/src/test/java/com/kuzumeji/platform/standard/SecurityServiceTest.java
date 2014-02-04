@@ -28,19 +28,19 @@ public class SecurityServiceTest {
     public void testKeyPair() {
         // RSA鍵ペアの作成
         final KeyPair keyPair = testee.generateKeyPair();
-        final RSAPrivateKey privateKey = (RSAPrivateKey) keyPair.getPrivate();
         final RSAPublicKey publicKey = (RSAPublicKey) keyPair.getPublic();
+        final RSAPrivateKey privateKey = (RSAPrivateKey) keyPair.getPrivate();
+        LOG.debug("公開鍵->{}", dumpKeyPair(publicKey));
         LOG.debug("秘密鍵->{}", dumpKeyPair(privateKey));
-        LOG.debug("公開鍵->{}", dumpKeyPair(privateKey));
         // RSA鍵ペアの保存/復元
         testee.saveKeyPair("testee", keyPair);
         final KeyPair keyPair2 = testee.loadKeyPair("testee");
-        assertThat(keyPair2.getPublic().getAlgorithm(), is(keyPair.getPublic().getAlgorithm()));
-        assertThat(keyPair2.getPublic().getFormat(), is(keyPair.getPublic().getFormat()));
-        assertThat(keyPair2.getPublic().getEncoded(), is(keyPair.getPublic().getEncoded()));
-        assertThat(keyPair2.getPrivate().getAlgorithm(), is(keyPair.getPrivate().getAlgorithm()));
-        assertThat(keyPair2.getPrivate().getFormat(), is(keyPair.getPrivate().getFormat()));
-        assertThat(keyPair2.getPrivate().getEncoded(), is(keyPair.getPrivate().getEncoded()));
+        assertThat(keyPair2.getPublic().getAlgorithm(), is(publicKey.getAlgorithm()));
+        assertThat(keyPair2.getPublic().getFormat(), is(publicKey.getFormat()));
+        assertThat(keyPair2.getPublic().getEncoded(), is(publicKey.getEncoded()));
+        assertThat(keyPair2.getPrivate().getAlgorithm(), is(privateKey.getAlgorithm()));
+        assertThat(keyPair2.getPrivate().getFormat(), is(privateKey.getFormat()));
+        assertThat(keyPair2.getPrivate().getEncoded(), is(privateKey.getEncoded()));
         // 公開鍵ファイルの保存(対向システム配布用)
         final File file = testee.savePublicKeyFile(publicKey);
         LOG.debug("公開鍵ファイルパス : {}", file.getPath());
