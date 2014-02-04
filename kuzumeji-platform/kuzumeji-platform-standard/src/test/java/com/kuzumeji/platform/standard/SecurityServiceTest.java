@@ -25,27 +25,36 @@ public class SecurityServiceTest {
     SecurityService testee = new SecurityService();
     private static final Logger LOG = LoggerFactory.getLogger(SecurityServiceTest.class);
     @Test
-    public void testGenerateKeyPair() {
+    public void testKeyPair() {
         // RSA鍵ペアの作成
         final KeyPair keyPair = testee.generateKeyPair();
         final RSAPrivateKey privateKey = (RSAPrivateKey) keyPair.getPrivate();
         final RSAPublicKey publicKey = (RSAPublicKey) keyPair.getPublic();
         LOG.debug("秘密鍵->{}", dumpKeyPair(privateKey));
         LOG.debug("公開鍵->{}", dumpKeyPair(privateKey));
+        // RSA鍵ペアの保存/復元
+        testee.saveKeyPair("testee", keyPair);
+        final KeyPair keyPair2 = testee.loadKeyPair("testee");
+        assertThat(keyPair2.getPublic().getAlgorithm(), is(keyPair.getPublic().getAlgorithm()));
+        assertThat(keyPair2.getPublic().getFormat(), is(keyPair.getPublic().getFormat()));
+        assertThat(keyPair2.getPublic().getEncoded(), is(keyPair.getPublic().getEncoded()));
+        assertThat(keyPair2.getPrivate().getAlgorithm(), is(keyPair.getPrivate().getAlgorithm()));
+        assertThat(keyPair2.getPrivate().getFormat(), is(keyPair.getPrivate().getFormat()));
+        assertThat(keyPair2.getPrivate().getEncoded(), is(keyPair.getPrivate().getEncoded()));
         // 公開鍵ファイルの保存(対向システム配布用)
         final File file = testee.savePublicKeyFile(publicKey);
         LOG.debug("公開鍵ファイルパス : {}", file.getPath());
-        // 公開鍵データ
-        final byte[] modules = publicKey.getModulus().toByteArray();
-        final byte[] exponent = publicKey.getPublicExponent().toByteArray();
-        // RSA公開鍵の作成
-        assertThat(testee.createPublicKey(modules, exponent), is(publicKey));
-        // final RSAPublicKey publicKey2 = testee.createPublicKey(modules, exponent);
-        // SecurityService.logKeyPair("RSA公開鍵-> ", publicKey2);
+    }
+    @Test
+    public void testEncryptDecrypt() {
+        // RSA鍵ペアの作成
+        final KeyPair keyPair = testee.generateKeyPair();
+        final RSAPrivateKey privateKey = (RSAPrivateKey) keyPair.getPrivate();
+        final RSAPublicKey publicKey = (RSAPublicKey) keyPair.getPublic();
         // 共通鍵の作成
         final char[] password = "hello, world!!".toCharArray();
         final byte[] salt = new byte[] { 1 };
-        final byte[] secretKey = testee.createSecretKey(password, salt);
+        final byte[] secretKey = testee.createCommonKey(password, salt);
         LOG.debug("共通鍵 : {}", Hex.encodeHexString(secretKey));
         // 共通鍵の暗号
         final byte[] encryptedSecretKey = testee.encrypt(publicKey, secretKey);
@@ -60,6 +69,7 @@ public class SecurityServiceTest {
         final SecuredData context = testee.encrypt(secretKey, text.getBytes());
         LOG.debug("テキスト暗号のデータ={}", Hex.encodeHexString(context.getEncrypted()));
         LOG.debug("テキスト暗号の初期化ベクトル(IV)={}", Hex.encodeHexString(context.getVector()));
+        // 共通鍵でテキスト復号
         final byte[] decryptedMessage = testee.decrypt(secretKey, context);
         assertThat(decryptedMessage, is(text.getBytes()));
         LOG.debug("テキスト復号 : {}", new String(decryptedMessage));
@@ -67,5 +77,14 @@ public class SecurityServiceTest {
     private static String dumpKeyPair(final Key key) {
         return MessageFormat.format("方式:{0} 形式:{1} 鍵:{2}", key.getAlgorithm(), key.getFormat(),
             Hex.encodeHexString(key.getEncoded()));
+    }
+    @Test
+    public void testSignature() {
+        final KeyPair keyPair = testee.generateKeyPair();
+        final RSAPrivateKey privateKey = (RSAPrivateKey) keyPair.getPrivate();
+        final RSAPublicKey publicKey = (RSAPublicKey) keyPair.getPublic();
+        final byte[] message = "ふがふがほげほげぶろろろろ".getBytes();
+        final byte[] signature = testee.signature(keyPair.getPrivate(), message);
+        assertThat(testee.verify(keyPair.getPublic(), signature, message), is(true));
     }
 }

@@ -16,21 +16,27 @@ import java.security.KeyFactory;
 import java.security.KeyPair;
 import java.security.KeyPairGenerator;
 import java.security.NoSuchAlgorithmException;
+import java.security.PrivateKey;
+import java.security.PublicKey;
 import java.security.SecureRandom;
+import java.security.Signature;
+import java.security.SignatureException;
 import java.security.interfaces.RSAPrivateKey;
 import java.security.interfaces.RSAPublicKey;
 import java.security.spec.InvalidKeySpecException;
-import java.security.spec.KeySpec;
+import java.security.spec.RSAPrivateKeySpec;
 import java.security.spec.RSAPublicKeySpec;
+import java.util.Properties;
 import javax.crypto.BadPaddingException;
 import javax.crypto.Cipher;
 import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
-import javax.crypto.SecretKey;
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.PBEKeySpec;
 import javax.crypto.spec.SecretKeySpec;
+import org.apache.commons.codec.DecoderException;
+import org.apache.commons.codec.binary.Hex;
 /**
  * セキュリティサービス
  * <dl>
@@ -41,20 +47,36 @@ import javax.crypto.spec.SecretKeySpec;
  */
 @SuppressWarnings("static-method")
 public final class SecurityService implements Service {
+    /** 公開鍵/モジュラスのキー */
+    private static final String KEY_PUBLIC_MODULUS = "%s.public.modulus";
+    /** 公開鍵/公開指数のキー */
+    private static final String KEY_PUBLIC_EXPONENT = "%s.public.exponent";
+    /** 秘密鍵/モジュラスのキー */
+    private static final String KEY_PRIVATE_MODULUS = "%s.private.modulus";
+    /** 秘密鍵/公開指数のキー */
+    private static final String KEY_PRIVATE_EXPONENT = "%s.private.exponent";
     /** RSA方式名 */
     private static final String RSA_ALGO_NAME = "RSA";
-    /** PBKDF2方式名 */
-    private static final String PBKDF2_ALGO_NAME = "PBKDF2WithHmacSHA1";
-    /** RSA変換名 */
-    private static final String RSA_TRANSFORM_NAME = "RSA/ECB/PKCS1Padding";
-    /** 方式名 */
-    private static final String ALGO_NAME = "AES";
-    /** AES変換名 */
-    private static final String AES_TRANSFORM_NAME = "AES/CBC/PKCS5Padding";
-    /** 乱数生成器 */
-    private static final SecureRandom SECURE_RANDOM = new SecureRandom();
     /** 鍵長 */
     private static final int KEYSIZE = 2048;
+    /** 乱数生成器 */
+    private static final SecureRandom SECURE_RANDOM = new SecureRandom();
+    /** PBKDF2方式名 */
+    private static final String PBKDF2_ALGO_NAME = "PBKDF2WithHmacSHA1";
+    /** PBE方式のキー長 */
+    private static final int PBE_KEY_LENGTH = 128;
+    /** PBE方式の繰返し回数 */
+    private static final int PBE_ITER_COUNT = 65536;
+    /** RSA変換名 */
+    private static final String RSA_TRANSFORM_NAME = "RSA/ECB/PKCS1Padding";
+    /** AES変換名 */
+    private static final String AES_TRANSFORM_NAME = "AES/CBC/PKCS5Padding";
+    /** AES方式名 */
+    private static final String AES_ALGO_NAME = "AES";
+    /** 署名方式名 */
+    private static final String SIGN_ALGO_NAME = "SHA512withRSA";
+    /** プロパティ名 */
+    private static final String PROPERTY_NAME = "security.properties";
     /** コンストラクタ */
     public SecurityService() {
     }
@@ -76,6 +98,70 @@ public final class SecurityService implements Service {
         }
     }
     /**
+     * RSA鍵ペアの保存
+     * <dl>
+     * <dt>使用条件
+     * <dd>RSA鍵ペアを保存する。
+     * </dl>
+     * @param name RSA鍵名
+     * @param keyPair RSA鍵ペア
+     */
+    public void saveKeyPair(final String name, final KeyPair keyPair) {
+        try {
+            final Properties property = new PropertyService(PROPERTY_NAME).getProperty();
+            final RSAPublicKey publicKey = (RSAPublicKey) keyPair.getPublic();
+            property.setProperty(String.format(KEY_PUBLIC_MODULUS, name),
+                Hex.encodeHexString(publicKey.getModulus().toByteArray()));
+            property.setProperty(String.format(KEY_PUBLIC_EXPONENT, name),
+                Hex.encodeHexString(publicKey.getPublicExponent().toByteArray()));
+            final RSAPrivateKey privateKey = (RSAPrivateKey) keyPair.getPrivate();
+            property.setProperty(String.format(KEY_PRIVATE_MODULUS, name),
+                Hex.encodeHexString(privateKey.getModulus().toByteArray()));
+            property.setProperty(String.format(KEY_PRIVATE_EXPONENT, name),
+                Hex.encodeHexString(privateKey.getPrivateExponent().toByteArray()));
+            try (FileOutputStream stream = new FileOutputStream(Thread.currentThread()
+                .getContextClassLoader().getResource(PROPERTY_NAME).getPath());) {
+                property.store(stream, "key pair saved.");
+            }
+        } catch (final IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    /**
+     * RSA鍵ペアの復元
+     * <dl>
+     * <dt>使用条件
+     * <dd>RSA鍵ペアを復元する。
+     * </dl>
+     * @param name RSA鍵名
+     * @return RSA鍵ペア
+     */
+    public KeyPair loadKeyPair(final String name) {
+        try {
+            final Properties property = new PropertyService(PROPERTY_NAME).getProperty();
+            final byte[] publicModulus = Hex.decodeHex(property.getProperty(
+                String.format(KEY_PUBLIC_MODULUS, name)).toCharArray());
+            final byte[] publicExponent = Hex.decodeHex(property.getProperty(
+                String.format(KEY_PUBLIC_EXPONENT, name)).toCharArray());
+            final byte[] privateModulus = Hex.decodeHex(property.getProperty(
+                String.format(KEY_PRIVATE_MODULUS, name)).toCharArray());
+            final byte[] privateExponent = Hex.decodeHex(property.getProperty(
+                String.format(KEY_PRIVATE_EXPONENT, name)).toCharArray());
+            final RSAPublicKey publicKey = (RSAPublicKey) KeyFactory.getInstance(RSA_ALGO_NAME)
+                .generatePublic(
+                    new RSAPublicKeySpec(new BigInteger(publicModulus), new BigInteger(
+                        publicExponent)));
+            final RSAPrivateKey privateKey = (RSAPrivateKey) KeyFactory.getInstance(RSA_ALGO_NAME)
+                .generatePrivate(
+                    new RSAPrivateKeySpec(new BigInteger(privateModulus), new BigInteger(
+                        privateExponent)));
+            return new KeyPair(publicKey, privateKey);
+        } catch (final IOException | DecoderException | InvalidKeySpecException
+            | NoSuchAlgorithmException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    /**
      * RSA公開鍵ファイルの保存
      * <dl>
      * <dt>使用条件
@@ -89,12 +175,12 @@ public final class SecurityService implements Service {
             final File file = File.createTempFile("public", ".key");
             try (FileOutputStream fos = new FileOutputStream(file);
                 DataOutputStream dos = new DataOutputStream(fos)) {
-                final byte[] byteModules = key.getModulus().toByteArray();
-                dos.writeInt(byteModules.length);
-                dos.write(byteModules);
-                final byte[] bytePublicExponent = key.getPublicExponent().toByteArray();
-                dos.writeInt(bytePublicExponent.length);
-                dos.write(bytePublicExponent);
+                final byte[] modulus = key.getModulus().toByteArray();
+                dos.writeInt(modulus.length);
+                dos.write(modulus);
+                final byte[] publicExponent = key.getPublicExponent().toByteArray();
+                dos.writeInt(publicExponent.length);
+                dos.write(publicExponent);
             }
             return file;
         } catch (final IOException e) {
@@ -102,39 +188,20 @@ public final class SecurityService implements Service {
         }
     }
     /**
-     * RSA公開鍵の作成
+     * 共通鍵の作成
      * <dl>
      * <dt>使用条件
-     * <dd>モジュラスと公開指数でRSA公開鍵を作成する。
-     * </dl>
-     * @param modulus モジュラス
-     * @param publicExponent 公開指数
-     * @return RSA公開鍵
-     */
-    public RSAPublicKey createPublicKey(final byte[] modulus, final byte[] publicExponent) {
-        try {
-            return (RSAPublicKey) KeyFactory.getInstance(RSA_ALGO_NAME).generatePublic(
-                new RSAPublicKeySpec(new BigInteger(modulus), new BigInteger(publicExponent)));
-        } catch (final NoSuchAlgorithmException | InvalidKeySpecException e) {
-            throw new RuntimeException(e);
-        }
-    }
-    /**
-     * 共通鍵(秘密鍵)の作成
-     * <dl>
-     * <dt>使用条件
-     * <dd>パスワードとソルトで共通鍵(秘密鍵)を作成する。(反復回数=65536,鍵長=128)
+     * <dd>PBKDF2方式によりパスワードとソルトで共通鍵を作成する。
      * </dl>
      * @param password パスワード
      * @param salt ソルト
      * @return 共通鍵(秘密鍵)
      */
-    public byte[] createSecretKey(final char[] password, final byte[] salt) {
+    public byte[] createCommonKey(final char[] password, final byte[] salt) {
         try {
-            final SecretKeyFactory factory = SecretKeyFactory.getInstance(PBKDF2_ALGO_NAME);
-            final KeySpec spec = new PBEKeySpec(password, salt, 65536, 128);
-            final SecretKey tmp = factory.generateSecret(spec);
-            return tmp.getEncoded();
+            return SecretKeyFactory.getInstance(PBKDF2_ALGO_NAME)
+                .generateSecret(new PBEKeySpec(password, salt, PBE_ITER_COUNT, PBE_KEY_LENGTH))
+                .getEncoded();
         } catch (final NoSuchAlgorithmException | InvalidKeySpecException e) {
             throw new RuntimeException(e);
         }
@@ -192,7 +259,7 @@ public final class SecurityService implements Service {
     public SecuredData encrypt(final byte[] key, final byte[] plain) {
         try {
             final Cipher cipher = Cipher.getInstance(AES_TRANSFORM_NAME);
-            cipher.init(Cipher.ENCRYPT_MODE, new SecretKeySpec(key, ALGO_NAME));
+            cipher.init(Cipher.ENCRYPT_MODE, new SecretKeySpec(key, AES_ALGO_NAME));
             try (final ByteArrayOutputStream bos = new ByteArrayOutputStream();) {
                 bos.write(cipher.doFinal(plain));
                 return new SecuredData(bos.toByteArray(), cipher.getIV());
@@ -215,7 +282,7 @@ public final class SecurityService implements Service {
     public byte[] decrypt(final byte[] key, final SecuredData secured) {
         try {
             final Cipher cipher = Cipher.getInstance(AES_TRANSFORM_NAME);
-            cipher.init(Cipher.DECRYPT_MODE, new SecretKeySpec(key, ALGO_NAME),
+            cipher.init(Cipher.DECRYPT_MODE, new SecretKeySpec(key, AES_ALGO_NAME),
                 new IvParameterSpec(secured.getVector()));
             try (final ByteArrayOutputStream stream = new ByteArrayOutputStream();) {
                 stream.write(cipher.doFinal(secured.getEncrypted()));
@@ -224,6 +291,47 @@ public final class SecurityService implements Service {
         } catch (InvalidKeyException | NoSuchAlgorithmException | NoSuchPaddingException
             | InvalidAlgorithmParameterException | IllegalBlockSizeException | BadPaddingException
             | IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    /**
+     * 平文データの署名
+     * <dl>
+     * <dt>使用条件
+     * <dd>SHA-512とRSA方式により秘密鍵と平文データを署名する。
+     * </dl>
+     * @param key 秘密鍵
+     * @param plain 平文データ
+     * @return 署名
+     */
+    public byte[] signature(final PrivateKey key, final byte[] plain) {
+        try {
+            final Signature signatureSign = Signature.getInstance(SIGN_ALGO_NAME);
+            signatureSign.initSign(key, SECURE_RANDOM);
+            signatureSign.update(plain);
+            return signatureSign.sign();
+        } catch (final NoSuchAlgorithmException | InvalidKeyException | SignatureException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    /**
+     * 平文データの検証
+     * <dl>
+     * <dt>使用条件
+     * <dd>SHA-512とRSA方式により公開鍵と署名から平文データを検証する。
+     * </dl>
+     * @param key 公開鍵
+     * @param signature 署名
+     * @param plain 平文データ
+     * @return 検証結果
+     */
+    public boolean verify(final PublicKey key, final byte[] signature, final byte[] plain) {
+        try {
+            final Signature verifier = Signature.getInstance(SIGN_ALGO_NAME);
+            verifier.initVerify(key);
+            verifier.update(plain);
+            return verifier.verify(signature);
+        } catch (final NoSuchAlgorithmException | InvalidKeyException | SignatureException e) {
             throw new RuntimeException(e);
         }
     }
