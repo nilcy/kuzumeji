@@ -7,6 +7,7 @@ package com.kuzumeji.platform.standard;
 import java.security.InvalidKeyException;
 import java.security.KeyPair;
 import java.security.KeyPairGenerator;
+import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.security.PrivateKey;
 import java.security.PublicKey;
@@ -34,6 +35,23 @@ public final class SecurityHelper {
     private SecurityHelper() {
     }
     /**
+     * メッセージダイジェストの作成
+     * <dl>
+     * <dt>使用条件
+     * <dd>TODO 事前条件(必要事項)と事後条件(保証要件)を表明すること。(DDD/契約による設計)
+     * </dl>
+     * @param message メッセージ
+     * @return メッセージダイジェスト
+     */
+    public static byte[] digest(final byte[] message) {
+        try {
+            final MessageDigest md = MessageDigest.getInstance("SHA-512");
+            return md.digest(message);
+        } catch (final NoSuchAlgorithmException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    /**
      * キーペアの作成
      * <dl>
      * <dt>使用条件
@@ -42,14 +60,13 @@ public final class SecurityHelper {
      * @return キーペア(公開鍵と秘密鍵)
      */
     public static KeyPair generateKeyPair() {
-        KeyPairGenerator keyPairGenerator = null;
         try {
-            keyPairGenerator = KeyPairGenerator.getInstance(KEY_ALGORITHM);
+            final KeyPairGenerator keyPairGenerator = KeyPairGenerator.getInstance(KEY_ALGORITHM);
+            keyPairGenerator.initialize(KEYSIZE, SECURE_RANDOM);
+            return keyPairGenerator.generateKeyPair();
         } catch (final NoSuchAlgorithmException e) {
             throw new RuntimeException(e);
         }
-        keyPairGenerator.initialize(KEYSIZE, SECURE_RANDOM);
-        return keyPairGenerator.generateKeyPair();
     }
     /**
      * メッセージの署名
@@ -89,10 +106,10 @@ public final class SecurityHelper {
     public static boolean verify(final PublicKey publicKey, final byte[] signature,
         final byte[] message) {
         try {
-            final Signature signatureVerify = Signature.getInstance(SIGN_ALGORITHM);
-            signatureVerify.initVerify(publicKey);
-            signatureVerify.update(message);
-            return signatureVerify.verify(signature);
+            final Signature verifier = Signature.getInstance(SIGN_ALGORITHM);
+            verifier.initVerify(publicKey);
+            verifier.update(message);
+            return verifier.verify(signature);
         } catch (final NoSuchAlgorithmException e) {
             throw new RuntimeException(e);
         } catch (final InvalidKeyException e) {
