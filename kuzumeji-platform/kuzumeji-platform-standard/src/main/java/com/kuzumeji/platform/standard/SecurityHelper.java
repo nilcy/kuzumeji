@@ -14,6 +14,8 @@ import java.security.PublicKey;
 import java.security.SecureRandom;
 import java.security.Signature;
 import java.security.SignatureException;
+import javax.crypto.Cipher;
+import javax.crypto.spec.SecretKeySpec;
 /**
  * セキュリティヘルパー
  * <dl>
@@ -52,12 +54,12 @@ public final class SecurityHelper {
         }
     }
     /**
-     * キーペアの作成
+     * 鍵ペアの作成
      * <dl>
      * <dt>使用条件
      * <dd>TODO 事前条件(必要事項)と事後条件(保証要件)を表明すること。(DDD/契約による設計)
      * </dl>
-     * @return キーペア(公開鍵と秘密鍵)
+     * @return 鍵ペア(公開鍵と秘密鍵)
      */
     public static KeyPair generateKeyPair() {
         try {
@@ -117,5 +119,11 @@ public final class SecurityHelper {
         } catch (final SignatureException e) {
             throw new RuntimeException(e);
         }
+    }
+    public static byte[] encrypt(final String key, final String text) throws Exception {
+        final SecretKeySpec sksSpec = new SecretKeySpec(key.getBytes(), "Blowfish");
+        final Cipher cipher = Cipher.getInstance("Blowfish");
+        cipher.init(javax.crypto.Cipher.ENCRYPT_MODE, sksSpec);
+        return cipher.doFinal(text.getBytes());
     }
 }
